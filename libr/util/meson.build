@@ -138,6 +138,9 @@ else
   r_util_sources += ['big.c']
 endif
 
+if get_option('use_mimalloc')
+  r_util_deps += [ mimalloc_dep ]
+endif
 
 r_util = library('r_util', r_util_sources,
   include_directories: platform_inc,

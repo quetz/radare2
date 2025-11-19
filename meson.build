@@ -422,6 +422,7 @@ userconf.set10('USE_CSNEXT', capstone_version == 'v6')
 userconf.set10('HAVE_OPENSSL', use_sys_openssl)
 userconf.set10('WANT_SSL_CRYPTO', use_ssl_crypto)
 userconf.set10('HAVE_LIBUV', use_libuv)
+userconf.set10('HAVE_MIMALLOC', get_option('use_mimalloc'))
 userconf.set10('HAVE_FORK', use_fork)
 userconf.set10('HAVE_GPERF', get_option('sdb_cgen'))
 userconf.set10('WANT_DYLINK', use_dylink)
@@ -509,6 +510,11 @@ script_files = [
   'scripts/vsmap.r2.js',
 ]
 install_data(script_files, install_dir: r2_scripts)
+
+if get_option('use_mimalloc')
+  mimalloc_sp = subproject('mimalloc')
+  mimalloc_dep = mimalloc_sp.get_variable('mimalloc_dep')
+endif
 
 libsdb_sp = subproject('sdb')
 libsdb_static = libsdb_sp.get_variable('libsdb_static')

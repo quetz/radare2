@@ -1,0 +1,95 @@
+# Security and debugging options
+option('mi_secure',
+  type: 'boolean',
+  value: false,
+  description: 'Use full security mitigations (guard pages, allocation randomization, double-free mitigation, free-list corruption detection)'
+)
+
+option('mi_debug_full',
+  type: 'boolean',
+  value: false,
+  description: 'Use full internal heap invariant checking in DEBUG mode (expensive)'
+)
+
+option('mi_padding',
+  type: 'boolean',
+  value: false,
+  description: 'Enable padding to detect heap block overflow (always on in DEBUG or SECURE mode)'
+)
+
+option('mi_guarded',
+  type: 'boolean',
+  value: false,
+  description: 'Build with guard pages behind certain object allocations'
+)
+
+# Error handling
+option('mi_show_errors',
+  type: 'boolean',
+  value: false,
+  description: 'Show error and warning messages by default (enabled by default in DEBUG mode)'
+)
+
+option('mi_xmalloc',
+  type: 'boolean',
+  value: false,
+  description: 'Enable abort() call on memory allocation failure by default'
+)
+
+# Performance options
+option('mi_opt_arch',
+  type: 'boolean',
+  value: false,
+  description: 'Turn on architecture specific optimizations (x64: haswell/avx2, arm64: armv8.1-a)'
+)
+
+option('mi_opt_simd',
+  type: 'boolean',
+  value: false,
+  description: 'Use SIMD instructions (requires mi_opt_arch to be enabled)'
+)
+
+# Platform-specific options
+option('mi_osx_interpose',
+  type: 'boolean',
+  value: true,
+  description: 'Use interpose to override standard malloc on macOS'
+)
+
+option('mi_osx_zone',
+  type: 'boolean',
+  value: true,
+  description: 'Use malloc zone to override standard malloc on macOS'
+)
+
+option('mi_local_dynamic_tls',
+  type: 'boolean',
+  value: false,
+  description: 'Use local-dynamic-tls for dlopen-compatible thread local storage (Unix)'
+)
+
+# Sanitizer support
+option('mi_track_valgrind',
+  type: 'boolean',
+  value: false,
+  description: 'Compile with Valgrind support (adds a small overhead)'
+)
+
+option('mi_track_asan',
+  type: 'boolean',
+  value: false,
+  description: 'Compile with address sanitizer support (adds a small overhead)'
+)
+
+# Misc options
+option('mi_skip_collect_on_exit',
+  type: 'boolean',
+  value: false,
+  description: 'Skip collecting memory on program exit'
+)
+
+option('mi_no_thp',
+  type: 'boolean',
+  value: false,
+  description: 'Disable transparent huge pages support on Linux/Android'
+)

@@ -140,6 +140,9 @@ extern "C" {
 #else
 #define HAVE_JEMALLOC @HAVE_JEMALLOC@
 #endif
+#
+
+#define HAVE_MIMALLOC @HAVE_MIMALLOC@
 
 #ifdef __cplusplus
 }

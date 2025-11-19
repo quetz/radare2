@@ -1,0 +1,6 @@
+[wrap-git]
+url = https://github.com/microsoft/mimalloc.git
+revision = v3.1.5
+patch_directory = mimalloc
+directory = mimalloc
+depth = 1
